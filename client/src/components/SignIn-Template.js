@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Link as RRRLink} from "react-router-dom";
 
 
 
@@ -84,9 +85,9 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <RRRLink to="/signUp">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </RRRLink>
               </Grid>
             </Grid>
           </Box>
