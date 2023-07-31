@@ -1,4 +1,3 @@
-const { convertNodeHttpToRequest } = require('apollo-server-core');
 const { AuthenticationError } = require('apollo-server-express')
 const { Category, Item, Profile, User } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -8,6 +7,9 @@ const resolvers = {
         categories: async (parent, { username }) => {
             const params = username ? { username }
         },
+        category: async (parent, { categoryId }) => {
+            return Category.findOne({ _id: categoryId })
+        }
         me: async (parent, args, context) => {
             if (context.profile) {
                 return Profile.findOne({ _id: context.profile._id}).populate('categories')
