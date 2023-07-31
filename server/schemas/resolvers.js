@@ -4,12 +4,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        profile: async (parent, { username }) => {
-            const params = username ? { username }
-        },
-        category: async (parent, { categoryId }) => {
-            return Category.findOne({ _id: categoryId })
-        },
         me: async (parent, args, context) => {
             if (context.profile) {
                 return Profile.findOne({ _id: context.profile._id}).populate('categories')
