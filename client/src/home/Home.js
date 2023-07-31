@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import PiePlot from './PiePlot';
+import PiePlot from '../components/PiePlot';
+import '../styles/home.css'
 
 
 export default function ResponsiveGrid() {
     return (
+    <div className="custom-wrapper"> 
     <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={ 12 }>
             <Grid item xs={12} md={6}>
@@ -16,7 +16,8 @@ export default function ResponsiveGrid() {
             <Grid item xs={12} md={6}>
             <PiePlot />  
             </Grid>
-        </Grid>
-      </Box>
+            </Grid>
+            </Box>
+    </div>
     );
-  }
+};
