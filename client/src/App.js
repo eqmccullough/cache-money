@@ -9,8 +9,8 @@ import SignInTemplate from "./components/SignIn-Template.js"
 function App() {
   return (
     <h1>Hello</h1>,
-    <SignInTemplate></SignInTemplate>
-
+    // <SignInTemplate></SignInTemplate>
+    <Home />
   );
 }
 
