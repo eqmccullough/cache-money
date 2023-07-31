@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
-import './graph.css';
+import '../styles/graph.css';
 
 class PiePlot extends React.Component {
     render() {

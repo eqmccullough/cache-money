@@ -1,0 +1,6 @@
+.custom-wrapper{
+    width: 95vw;
+    height: 100vh;
+    position: fixed;
+    background-color: lightseagreen;
+}
