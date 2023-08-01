@@ -7,10 +7,7 @@ import "../../styles/home.css";
 
 export default function ResponsiveGrid() {
   return (
-    <div className="custom-wrapper">
-      <div className="header-container">
-        <h1 className="app-title"> (Cache Money Logo) </h1>
-      </div>
+<> 
       <div className="app-body">
         <div className="chart-container">
           <div id="pie-box">
@@ -26,7 +23,6 @@ export default function ResponsiveGrid() {
               <DataTable/>    
         </div>
       </div>
-      <Drawer />
-    </div>
+      </>
   );
 }

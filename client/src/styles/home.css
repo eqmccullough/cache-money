@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Figree:regular,bold,italic');
+@import url('https://fonts.googleapis.com/css?family=Figree');
 
 :root{
     --green-1: #B2E7BC;
@@ -27,6 +27,9 @@
 
 .header-container{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
 }
 
 .app-body{
