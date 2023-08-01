@@ -133,7 +133,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <RRRLink to="/signIn">
+                <RRRLink to="/login">
                   Already have an account? Sign in
                 </RRRLink>
               </Grid>

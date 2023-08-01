@@ -123,7 +123,7 @@ export default function Login(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <RRRLink to="/signUp">
+                <RRRLink to="/signup">
                   {"Don't have an account? Sign Up"}
                 </RRRLink>
               </Grid>
