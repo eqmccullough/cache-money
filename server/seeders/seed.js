@@ -14,9 +14,9 @@ db.once("open", async () => {
     //create user
     const user = await User.create(userdata[i]);
     //create category
-    const category = await Category.creat(categoryData[i]);
+    const category = await Category.create(categoryData[i]);
   }
-  //updateuser with new categories id number
+  //update user with new categories id number
   const updateUser = await User.findByIdAndUpdate(
     user.id,
     { $addToSet: { categories: category._id } },
