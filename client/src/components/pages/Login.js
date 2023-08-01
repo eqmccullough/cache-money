@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Avatar from '@mui/material/Avatar';
@@ -38,7 +39,7 @@ export default function Login(props) {
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
     const { data } = await login({
@@ -75,7 +76,7 @@ export default function Login(props) {
           </Typography>
           {data ? (
             <p> You're logged in!{' '}
-            <Link to="/">to your profile</Link>
+            <RRRLink to="/">to your profile</RRRLink>
             </p>
           ) : (
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

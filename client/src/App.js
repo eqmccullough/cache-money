@@ -5,11 +5,11 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from "apollo/client";
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login.js";
-import SignUpTemplate from "./components/pages/SignUp.js";
+import SignUp from "./components/pages/SignUp.js";
 import Header from "./components/Header";
 
 const httpLink = createHttpLink({

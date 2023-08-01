@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
@@ -23,7 +24,7 @@ import {Link as RRRLink} from "react-router-dom";
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  cont [formState, setFormState] = useState({
+  const [formState, setFormState] = useState({
     username: '',
     email: '',
     password: '',
@@ -38,7 +39,7 @@ export default function SignUp() {
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -72,7 +73,7 @@ export default function SignUp() {
           </Typography>
           {data ? ( 
             <p> Success! Your Profile is created. {' '}
-            <Link to="/">to your profile</Link>
+            <RRRLink to="/">to your profile</RRRLink>
             </p>
           ) : (
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>

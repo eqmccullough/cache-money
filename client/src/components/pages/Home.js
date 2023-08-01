@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import PiePlot from '../PiePlot';
-import '../styles/home.css'
+import '../../styles/home.css'
 
 
 export default function ResponsiveGrid() {
