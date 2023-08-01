@@ -19,15 +19,13 @@
       "Debt",
       "Savings"
     ],
-    "income": 5000,
-    "userId": 2
+    "income": 5000
   },
   {
     "username": "Daniel Dave Lewis",
     "email": "oscarweinner@gmail.com",
     "password": "Password123!",
     "categories": ["Home", "Transportation", "Food", "Debt", "Savings"],
-    "income": 10000,
-    "userId": 3
+    "income": 10000
   }
 ]
