@@ -7,7 +7,7 @@ import SignInTemplate from "./components/SignIn-Template.js"
 function App() {
   return (
     <>
-      
+      <Home />
     </>
     
 
