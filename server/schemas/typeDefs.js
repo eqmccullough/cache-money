@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     categories: [Category]!
-    income: Number
+    income: Float
   }
 
   type Category {
@@ -19,7 +19,7 @@ const typeDefs = gql`
   type Item {
     _id: ID
     name: String
-    amount: Number
+    amount: Float
     userId: [User]!
   }
 
@@ -35,7 +35,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, income: Float!): Auth
     login(email: String!, password: String!): Auth
   }
 `;
