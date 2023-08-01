@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 import Auth from "../../utils/auth";
 
@@ -9,7 +11,7 @@ export default function Header() {
     Auth.logout();
   };
   return (
-    <header className="header to-be-edited-for-styling">
+    <header className="header to-be-edited-for-styling" >
       <div>
         <h1>Cache Money Records</h1>
       </div>
@@ -21,8 +23,8 @@ export default function Header() {
             </>
           ) : (
               <>
-              <Link className="to-be-edited" to="/login">Login</Link>
-              <Link className="to-be-edited" to="/signup">Signup</Link>
+              <Link to="/login"><Button className="to-be-edited" variant="contained">Login</Button></Link>
+              <Link to="/signup"><Button className="to-be-edited" variant="contained">SignUp</Button></Link>
               </>
           )}
       </div>
