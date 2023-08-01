@@ -9,6 +9,12 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        categories: async () => {
+            return Category.find().populate('')
+        },
+        categoryItems: async (parent, { name }, context) => {
+            return Category.findOne({ name: name })
+        }, 
         me: async (parent, args, context) => {
             if (context._id) {
                 return User.findOne({ _id: context._id}).populate({ 
@@ -28,8 +34,8 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password })
+        addUser: async (parent, { username, email, password, income }) => {
+            const user = await User.create({ username, email, password, income })
             const token = signToken(user);
             return { token, user }
         },
@@ -53,3 +59,5 @@ const resolvers = {
 
     }
 }
+
+module.exports = resolvers;

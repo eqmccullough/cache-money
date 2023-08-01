@@ -78,6 +78,18 @@
     font-size: 2.5rem;
 }
 
+#custom-input{
+    display: flex;
+    text-decoration: none;
+}
+
+.test-box{
+    width: 250px;
+    height: 250px;
+    background-color: pink;
+    color: #6048a3;
+}
+
 
 /* Responsive-layouts */
 
