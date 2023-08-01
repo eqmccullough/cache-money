@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 import Auth from "../../utils/auth";
 
@@ -21,8 +23,8 @@ export default function Header() {
             </>
           ) : (
               <>
-              <Link className="to-be-edited" to="/login">Login</Link>
-              <Link className="to-be-edited" to="/signup">Signup</Link>
+              <Link to="/login"><Button className="to-be-edited" variant="contained">Login</Button></Link>
+              <Link to="/signup"><Button className="to-be-edited" variant="contained">SignUp</Button></Link>
               </>
           )}
       </div>
