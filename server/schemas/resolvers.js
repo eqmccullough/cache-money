@@ -1,40 +1,40 @@
-const { AuthenticationError } = require("apollo-server-express");
-const {
-  Category,
-  Item,
-  // Profile,
-  User,
-} = require("../models");
-const { signToken } = require("../utils/auth");
+// const { AuthenticationError } = require('apollo-server-express')
+const { 
+    Category, 
+    Item, 
+    // Profile, 
+    User 
+} = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
-  Query: {
-    categories: async () => {
-      return Category.find();
+    Query: {
+        // categories: async () => {
+        //     return Category.find().populate('')
+        // },
+        categoryItems: async (parent, { name }, context) => {
+          if (context.user._id) {
+            return (await Category.findOne({ name })).populate("items");
+          }
+        },
+            me: async (parent, args, context) => {
+            // console.log(context);
+            if (context.user._id) {
+                return User.findOne({ _id: context.user._id}).populate({ 
+                    path: "categories",
+                    populate: {
+                        path: "items",
+                        match: {
+                            userId: {
+                                $eq: context.user._id,
+                            }
+                        }
+                    }
+                })
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
-    categoryItems: async (parent, { name }, context) => {
-      if (context._id) {
-        return (await Category.findOne({ name })).populate("items");
-      }
-    },
-    me: async (parent, args, context) => {
-      if (context._id) {
-        return User.findOne({ _id: context._id }).populate({
-          path: "categories",
-          populate: {
-            path: "items",
-            match: {
-              userId: {
-                $eq: context._id,
-              },
-            },
-          },
-        });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-  },
-
   Mutation: {
     addUser: async (parent, { username, email, password, income }) => {
       const user = await User.create({ username, email, password, income });
