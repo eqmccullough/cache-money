@@ -70,6 +70,11 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+          {data ? ( 
+            <p> Success! Your Profile is created. {' '}
+            <Link to="/">to your profile</Link>
+            </p>
+          ) : (
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -133,6 +138,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
           </Box>
+          )}
         </Box>
       </Container>
     </ThemeProvider>
