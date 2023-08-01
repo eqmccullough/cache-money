@@ -9,7 +9,7 @@ export const data = {
   datasets: [
     {
       label: 'Category',
-      data: [2000, 500, 300],
+      data: [2100, 700, 200],
       backgroundColor: [
         '#56A26480',
         '#B2E7BC80',
@@ -34,7 +34,7 @@ export const data = {
 },
 };
 
-export default function PiePlot() {
+export default function PiePlot1() {
   return <Doughnut data={data} />;
 }
 

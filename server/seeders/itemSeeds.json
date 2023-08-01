@@ -1,18 +1,167 @@
 [
   {
     "name": "Rent",
-    "amount": "1790"
+    "amount": 1790,
+    "userId": 1
   },
   {
     "name": "Electric",
-    "amount": "38.39"
+    "amount": 38.39,
+    "userId": 1
   },
   {
     "name": "Water",
-    "amount": "18.26"
+    "amount": 18.26,
+    "userId": 1
+  },
+  {
+    "name": "Bus Pass",
+    "amount": 75,
+    "userId": 1
+  },
+  {
+    "name": "Lyft",
+    "amount": 100,
+    "userId": 1
+  },
+  {
+    "name": "Groceries",
+    "amount": 200,
+    "userId": 1
+  },
+  {
+    "name": "Delivery",
+    "amount": 60,
+    "userId": 1
+  },
+  {
+    "name": "Dining-Out",
+    "amount": 183,
+    "userId": 1
+  },
+  {
+    "name": "Rent",
+    "amount": 2000,
+    "userId": 2
+  },
+  {
+    "name": "Electric",
+    "amount": 16.12,
+    "userId": 2
+  },
+  {
+    "name": "Water",
+    "amount": 11.75,
+    "userId": 2
   },
   {
     "name": "Gas",
-    "amount": "18.24"
+    "amount": 12.92,
+    "userId": 2
+  },
+  {
+    "name": "Car",
+    "amount": 260,
+    "userId": 2
+  },
+  {
+    "name": "Insurance",
+    "amount": 180,
+    "userId": 2
+  },
+  {
+    "name": "Gas",
+    "amount": 80,
+    "userId": 2
+  },
+  {
+    "name": "Maintenance",
+    "amount": 200,
+    "userId": 2
+  },
+  {
+    "name": "Groceries",
+    "amount": 240,
+    "userId": 2
+  },
+  {
+    "name": "Dining-Out",
+    "amount": 100,
+    "userId": 2
+  },
+  {
+    "name": "Food",
+    "amount": 60,
+    "userId": 2
+  },
+  {
+    "name": "Vet",
+    "amount": 58,
+    "userId": 2
+  },
+  {
+    "name": "Daycamp",
+    "amount": 320,
+    "userId": 2
+  },
+  {
+    "name": "Toys",
+    "amount": 48,
+    "userId": 2
+  },
+  {
+    "name": "Massage",
+    "amount": 135,
+    "userId": 2
+  },
+  {
+    "name": "Gym",
+    "amount": 120,
+    "userId": 2
+  },
+  {
+    "name": "Therapy",
+    "amount": 82,
+    "userId": 2
+  },
+  {
+    "name": "Insurance",
+    "amount": 300,
+    "userId": 2
+  },
+  {
+    "name": "Vacation",
+    "amount": 500,
+    "userId": 2
+  },
+  {
+    "name": "Emergency Fund",
+    "amount": 1000,
+    "userId": 2
+  },
+  {
+    "name": "Retirement",
+    "amount": 13000,
+    "userId": 2
+  },
+  {
+    "name": "Holiday",
+    "amount": 1000,
+    "userId": 2
+  },
+  {
+    "name": "Student Loans",
+    "amount": 140,
+    "userId": 2
+  },
+  {
+    "name": "Medical",
+    "amount": 60,
+    "userId": 2
+  },
+  {
+    "name": "Personal Loan",
+    "amount": 400,
+    "userId": 2
   }
 ]

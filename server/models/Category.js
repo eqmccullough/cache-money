@@ -4,7 +4,6 @@ const categorySchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   items: [
@@ -17,4 +16,4 @@ const categorySchema = new Schema({
 
 const Category = model("Category", categorySchema);
 
-module.exports = Category
+module.exports = Category;
