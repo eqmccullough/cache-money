@@ -1,29 +1,30 @@
-const { AuthenticationError } = require('apollo-server-express')
+// const { AuthenticationError } = require('apollo-server-express')
 const { 
     Category, 
     Item, 
     // Profile, 
     User 
 } = require('../models');
-const { signToken } = require('../utils/auth');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        categories: async () => {
-            return Category.find().populate('')
-        },
-        categoryItems: async (parent, { name }, context) => {
-            return Category.findOne({ name: name })
-        }, 
+        // categories: async () => {
+        //     return Category.find().populate('')
+        // },
+        // categoryItems: async (parent, { name }, context) => {
+        //     return Category.findOne({ name: name })
+        // }, 
         me: async (parent, args, context) => {
-            if (context._id) {
-                return User.findOne({ _id: context._id}).populate({ 
+            // console.log(context);
+            if (context.user._id) {
+                return User.findOne({ _id: context.user._id}).populate({ 
                     path: "categories",
                     populate: {
                         path: "items",
                         match: {
                             userId: {
-                                $eq: context._id,
+                                $eq: context.user._id,
                             }
                         }
                     }
