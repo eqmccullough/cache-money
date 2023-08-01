@@ -7,9 +7,10 @@ import {
   createHttpLink,
 } from "apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import Home from "./home/Home";
-import SignInTemplate from "./components/SignIn-Template.js";
-import SignUpTemplate from "./components/SignUp-Template.js";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login.js";
+import SignUpTemplate from "./components/pages/SignUp.js";
+import Header from "./components/Header";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -38,10 +39,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Routes>
-          <Route path="/signIn" element={<SignInTemplate />} />
-          <Route path="/signUp" element={<SignUpTemplate />} />
-        </Routes>
+        <div className="header to-be-changed">
+          <Header />
+          <div className="container to-be-edited">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+            </Routes>
+          </div>
+        </div>
       </Router>
     </ApolloProvider>
   );

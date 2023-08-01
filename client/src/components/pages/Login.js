@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,18 +16,44 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Link as RRRLink} from "react-router-dom";
 
+import Auth from '../../utils/auth';
+
 
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function Login(props) {
+  const [formState, setFormState] = useState({ 
+    email: '',
+    password: ''
+  })
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState, [name]: value,
+    })
+  }
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+    const { data } = await login({
+      variables: { ...formState },
+    })
+
+      Auth.login(data.login.token)
+    } catch (e) {
+      console.error(e);
+    }
+
+    setFormState({
+      email: '',
+      password: '',
+    })
   };
 
   return (
@@ -45,6 +73,11 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          {data ? (
+            <p> You're logged in!{' '}
+            <Link to="/">to your profile</Link>
+            </p>
+          ) : (
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -54,6 +87,8 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={formState.email}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -65,6 +100,8 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={formState.password}
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -91,6 +128,7 @@ export default function SignIn() {
               </Grid>
             </Grid>
           </Box>
+          )}
         </Box>
       </Container>
     </ThemeProvider>
