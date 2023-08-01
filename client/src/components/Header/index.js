@@ -11,7 +11,7 @@ export default function Header() {
     Auth.logout();
   };
   return (
-    <header className="header to-be-edited-for-styling">
+    <header className="header to-be-edited-for-styling" >
       <div>
         <h1>Cache Money Records</h1>
       </div>
