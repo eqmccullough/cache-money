@@ -29,8 +29,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
+    categories: [Category]
+    categoryItems(name: String!): [Category] 
     me: User
   }
 
