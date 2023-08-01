@@ -4,8 +4,7 @@
     "email": "heidiheaux@gmail.com",
     "password": "Password123!",
     "categories": ["Home", "Transportation", "Food", "Health"],
-    "income": 4000,
-    "userId": 1
+    "income": 4000
   },
   {
     "username": "Seance Knowles",
