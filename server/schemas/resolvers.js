@@ -1,18 +1,27 @@
 const { AuthenticationError } = require('apollo-server-express')
-const { Category, Item, Profile, User } = require('../models');
+const { 
+    Category, 
+    Item, 
+    // Profile, 
+    User 
+} = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        categories: async (parent, { username }) => {
-            const params = username ? { username }
-        },
-        category: async (parent, { categoryId }) => {
-            return Category.findOne({ _id: categoryId })
-        }
         me: async (parent, args, context) => {
-            if (context.profile) {
-                return Profile.findOne({ _id: context.profile._id}).populate('categories')
+            if (context._id) {
+                return User.findOne({ _id: context._id}).populate({ 
+                    path: "categories",
+                    populate: {
+                        path: "items",
+                        match: {
+                            userId: {
+                                $eq: context._id,
+                            }
+                        }
+                    }
+                })
             }
             throw new AuthenticationError('You need to be logged in!');
         },
