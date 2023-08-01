@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import "./styles/home.css"
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,6 +12,8 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login.js";
 import SignUp from "./components/pages/SignUp.js";
 import Header from "./components/Header";
+import Profile from "./components/pages/Profile";
+import Drawer from "./components/Drawer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,15 +42,22 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="header to-be-changed">
-          <Header />
-          <div className="container to-be-edited">
+        <div className="custom-wrapper">
+        <div className="header-container">
+            <Header/>
+          </div>
+          
+          <div className="app-body">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/profile" element={<Profile/>} />
             </Routes>
           </div>
+          <footer>
+            <Drawer/>
+          </footer>
         </div>
       </Router>
     </ApolloProvider>
