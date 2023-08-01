@@ -22,8 +22,8 @@ export default function Header() {
             </>
           ) : (
               <>
-              <Link to="/login"><Button className="to-be-edited" variant="contained">Login</Button></Link>
-              <Link to="/signup"><Button className="to-be-edited" variant="contained">SignUp</Button></Link>
+              <Link to="/login"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>Login</Button></Link>
+              <Link to="/signup"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>SignUp</Button></Link>
               </>
           )}
         </div>
