@@ -1,26 +1,23 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import * as React from "react";
+import CategorySelect from "./CategorySelect";
+import Box from "@mui/material/Box";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import FilledInput from "@mui/material/FilledInput";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+
 
 export default function Drawer() {
   const [state, setState] = React.useState({
@@ -33,8 +30,8 @@ export default function Drawer() {
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
       return;
     }
@@ -44,27 +41,16 @@ export default function Drawer() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-      >
-    <div>
-              
-    </div>
-
-
-    </Box>
+    ></Box>
   );
-    
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <div>
-      {['bottom'].map((anchor) => (
+      {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}> EDIT </Button>
           <SwipeableDrawer
@@ -74,23 +60,38 @@ export default function Drawer() {
             onOpen={toggleDrawer(anchor, true)}
           >
             <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
+              <CategorySelect/>
+              <ul>
+              <li id="custom-input">
+                  <h2> Item </h2> <h2> $20.23 </h2>
+                  <Fab color="secondary" sx={{ m: 1, bgcolor:"#6048a3"}} aria-label="edit">
+                  <EditIcon />
+                  </Fab>
+                  <Fab color="secondary" sx={{ m: 1, bgcolor:"#9e4848"}} aria-label="edit">
+                    <DeleteIcon />
+                  </Fab>
+                </li>
+
+                <li id="custom-input">
+                  <TextField sx={{ m: 1, width: "50ch" }} label="Category" variant="filled" />
+                  <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
+                    <InputLabel htmlFor="filled-adornment-amount">
+                      Amount
+                    </InputLabel>
+                    <FilledInput
+                      id="filled-adornment-amount"
+                      startAdornment={
+                        <InputAdornment position="start">$</InputAdornment>
+                      }
+                    />
+                  </FormControl>
+                  <Fab color="primary" sx={{ m: 1, bgcolor: "#598C58" }} aria-label="add">
+                    <AddIcon />
+                  </Fab>
+                </li>
+
+              </ul>
+            </div>
           </SwipeableDrawer>
         </React.Fragment>
       ))}
