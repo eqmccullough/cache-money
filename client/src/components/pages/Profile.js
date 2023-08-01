@@ -5,7 +5,7 @@ import Drawer from "../components/Drawer";
 import DataTable from "../components/Table";
 import "../styles/home.css";
 
-export default function ResponsiveGrid() {
+export default function Profile() {
   return (
     <div className="custom-wrapper">
       <div className="header-container">
