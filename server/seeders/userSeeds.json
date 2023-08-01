@@ -1,0 +1,34 @@
+[
+  {
+    "username": "Heid Heaux",
+    "email": "heidiheaux@gmail.com",
+    "password": "Password123!",
+    "categories": ["Home", "Transportation", "Food", "Health"],
+    "income": 4000,
+    "userId": 1
+  },
+  {
+    "username": "Seance Knowles",
+    "email": "seanceKnowles@gmail.com",
+    "password": "Password123!",
+    "categories": [
+      "Home",
+      "Transportation",
+      "Food",
+      "Pets",
+      "Health",
+      "Debt",
+      "Savings"
+    ],
+    "income": 5000,
+    "userId": 2
+  },
+  {
+    "username": "Daniel Dave Lewis",
+    "email": "oscarweinner@gmail.com",
+    "password": "Password123!",
+    "categories": ["Home", "Transportation", "Food", "Debt", "Savings"],
+    "income": 10000,
+    "userId": 3
+  }
+]
