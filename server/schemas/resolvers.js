@@ -85,11 +85,7 @@ const resolvers = {
       return category;
     },
     addItem: async (parent, { name, amount, categoryId }, context) => {
-      const item = await Item.create({
-        name,
-        amount,
-        userId: context.user._id,
-      });
+      const item = await Item.create({ name, amount, context });
 
       await Category.findOneAndUpdate(
         { _id: categoryId },
