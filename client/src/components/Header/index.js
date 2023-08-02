@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
+import '../../styles/home.css'
+
 
 import Auth from "../../utils/auth";
 
@@ -9,10 +12,8 @@ export default function Header() {
     Auth.logout();
   };
   return (
-    <header className="header to-be-edited-for-styling">
-      <div>
-        <h1>Cache Money Records</h1>
-      </div>
+      <div className="header-container">
+        <h1 className="app-title">Cache Money Records</h1>
       <div>
           {Auth.loggedIn() ? (
               <>
@@ -21,11 +22,11 @@ export default function Header() {
             </>
           ) : (
               <>
-              <Link className="to-be-edited" to="/login">Login</Link>
-              <Link className="to-be-edited" to="/signup">Signup</Link>
+              <Link to="/login"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>Login</Button></Link>
+              <Link to="/signup"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>SignUp</Button></Link>
               </>
           )}
-      </div>
-    </header>
+        </div>
+        </div>
   );
 };

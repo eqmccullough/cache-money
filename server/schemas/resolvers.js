@@ -1,23 +1,30 @@
-const { AuthenticationError } = require('apollo-server-express')
+// const { AuthenticationError } = require('apollo-server-express')
 const { 
     Category, 
     Item, 
     // Profile, 
     User 
 } = require('../models');
-const { signToken } = require('../utils/auth');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        // categories: async () => {
+        //     return Category.find().populate('')
+        // },
+        // categoryItems: async (parent, { name }, context) => {
+        //     return Category.findOne({ name: name })
+        // }, 
         me: async (parent, args, context) => {
-            if (context._id) {
-                return User.findOne({ _id: context._id}).populate({ 
+            // console.log(context);
+            if (context.user._id) {
+                return User.findOne({ _id: context.user._id}).populate({ 
                     path: "categories",
                     populate: {
                         path: "items",
                         match: {
                             userId: {
-                                $eq: context._id,
+                                $eq: context.user._id,
                             }
                         }
                     }
@@ -28,8 +35,8 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password })
+        addUser: async (parent, { username, email, password, income }) => {
+            const user = await User.create({ username, email, password, income })
             const token = signToken(user);
             return { token, user }
         },
@@ -53,3 +60,5 @@ const resolvers = {
 
     }
 }
+
+module.exports = resolvers;

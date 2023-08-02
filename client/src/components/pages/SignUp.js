@@ -27,15 +27,18 @@ export default function SignUp() {
   const [formState, setFormState] = useState({
     username: '',
     email: '',
+    income: 0,
     password: '',
   })
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
+  if(error) {
+    console.log(JSON.stringify(error));
+  }
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({
-      ...formState, [name]: value,
+      ...formState, [name]: name==="income" ? parseFloat (value) : value,
     })
   }
 
@@ -55,7 +58,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container sx={{ bgcolor: "white" }} component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -107,6 +110,19 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  id="income"
+                  label="Monthly Income"
+                  name="income"
+                  type="number"
+                  autoComplete="income"
+                  value={formState.income}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
                   name="password"
                   label="Password"
                   type="password"
@@ -128,6 +144,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onSubmit={handleSubmit}
             >
               Sign Up
             </Button>
