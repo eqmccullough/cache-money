@@ -10,18 +10,18 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     allCategories: async () => {
-      return Category.find().populate('items')
+      return Category.find().populate("items");
     },
-    categories: async (parent, args , context) => {
-        console.log(context.user);
-        return Category.find().populate({
-          path: "items",
-          match: {
-            userId: {
-              $eq: context.user._id,
-            },
+    categories: async (parent, args, context) => {
+      console.log(context.user);
+      return Category.find().populate({
+        path: "items",
+        match: {
+          userId: {
+            $eq: context.user._id,
           },
-        });
+        },
+      });
     },
     // userCategories: async (parent, { userId }, context) => {
     //   if (context.user._id) {
@@ -86,12 +86,17 @@ const resolvers = {
 
       return { token, user };
     },
-    addCategory: async (parent, { name, }) => {
+    addCategory: async (parent, { name }) => {
       const category = await Category.create({ name });
       return category;
     },
-    addItem: async (parent, { name, amount, userId }) => {
-      const item = await Item.create({ name, amount, userId })
+    addItem: async (parent, { name, amount, userId, categoryId }) => {
+      const item = await Item.create({ name, amount, userId });
+
+      await Category.findOneAndUpdate(
+        { _id: categoryId },
+        { $addToSet: { items: item._id } }
+      );
 
       return item;
     },

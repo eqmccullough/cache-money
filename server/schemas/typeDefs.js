@@ -40,7 +40,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!, income: Float!): Auth
     login(email: String!, password: String!): Auth
     addCategory(name: String!): Category
-    addItem(name: String!, amount: Float!, userId: ID!): Item
+    addItem(name: String!, amount: Float!, userId: ID!, categoryId: ID!): Item
   }
 `;
 
