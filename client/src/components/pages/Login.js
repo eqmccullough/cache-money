@@ -60,12 +60,6 @@ export default function Login(props) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container sx={{ bgcolor: "white" }} component="main" maxWidth="xs">
-
-
-
-
-
-
         <CssBaseline />
         <Box
           sx={{
@@ -110,10 +104,6 @@ export default function Login(props) {
               value={formState.password}
               onChange={handleChange}
             />
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth

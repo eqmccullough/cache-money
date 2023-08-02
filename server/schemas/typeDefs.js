@@ -1,7 +1,7 @@
-// const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
-// const typeDefs = gql`
-const typeDefs = `
+// const typeDefs = `
+const typeDefs = gql`
   type User {
     _id: ID
     username: String
@@ -30,15 +30,25 @@ const typeDefs = `
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
+    allCategories: [Category]
+    categories: [Category]
+    categoryItems(categoryId: ID!): Category
     me: User
     categories: [Category]
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, income: Float!): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      income: Float!
+    ): Auth
     login(email: String!, password: String!): Auth
+    addCategory(name: String!): Category
+    addItem(name: String!, amount: Float!, userId: ID!, categoryId: ID!): Item
+    removeItem(categoryId: ID!, itemId: ID!): Item
+    updateItem(itemId: ID!, newAmount: Float!): Item
   }
 `;
 
