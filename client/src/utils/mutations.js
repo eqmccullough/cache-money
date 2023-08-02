@@ -40,6 +40,7 @@ export const ADD_CATEGORY = gql`
 `;
 
 export const ADD_ITEM = gql`
+
   mutation addItem($name: String!, $amount: Float!, $categoryId: ID!) {
     addItem(name: $name, amount: $amount, categoryId: $categoryId) {
       _id
