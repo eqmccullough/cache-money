@@ -33,6 +33,7 @@ const typeDefs = `
     users: [User]
     user(username: String!): User
     me: User
+    categories: [Category]
   }
 
   type Mutation {
