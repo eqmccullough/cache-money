@@ -55,7 +55,11 @@ Licensed under the [MIT](https://opensource.org/licenses/MIT) license
 
 ### link to deployed application:
 
+https://budgie-c967e4a5fd01.herokuapp.com/
+
 ### GitHub repository:
+
+https://github.com/eqmccullough/cache-money
 
 ## Presentation slides
 
