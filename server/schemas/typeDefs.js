@@ -41,6 +41,8 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addCategory(name: String!): Category
     addItem(name: String!, amount: Float!, userId: ID!, categoryId: ID!): Item
+    removeItem(categoryId: ID!, itemId: ID!): Item
+    updateItem(itemId: ID!, newAmount: Float!): Item
   }
 `;
 

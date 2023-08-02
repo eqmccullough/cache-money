@@ -100,6 +100,22 @@ const resolvers = {
 
       return item;
     },
+    removeItem: async (parent, { categoryId, itemId }) => {
+      await Category.findOneAndUpdate(
+        { _id: categoryId },
+        { $pull: { items: { _id: itemId } } },
+        { new: true }
+      );
+
+      return Item.findOneAndDelete({ _id: itemId });
+    },
+    updateItem: async (parent, { itemId, newAmount }) => {
+      return Item.findOneAndUpdate(
+        { _id: itemId },
+        { $set: { amount: newAmount } },
+        { new: true }
+      );
+    },
   },
 };
 
