@@ -31,7 +31,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CATEGORY = gql`
-  mutation Mutation($name: String!) {
+  mutation addCategory($name: String!) {
     addCategory(name: $name) {
       _id
       name
@@ -40,20 +40,21 @@ export const ADD_CATEGORY = gql`
 `;
 
 export const ADD_ITEM = gql`
-mutation AddItem($name: String! $amount: Float!, $categoryId: ID!) {
-  addItem(name: $name, amount: $amount, categoryId: $categoryId) {
-    _id
-    amount
-    name
-    userId {
+  mutation addItem($name: String!, $amount: Float!, $categoryId: ID!) {
+    addItem(name: $name, amount: $amount, categoryId: $categoryId) {
       _id
-      username
+      amount
+      name
+      userId {
+        _id
+        username
+      }
     }
   }
-}`;
+`;
 
 export const UPDATE_ITEM = gql`
-  mutation Mutation($itemId: ID!, $newAmount: Float!) {
+  mutation updateItem($itemId: ID!, $newAmount: Float!) {
     updateItem(itemId: $itemId, newAmount: $newAmount) {
       _id
       name
