@@ -1,23 +1,23 @@
 const { AuthenticationError } = require('apollo-server-express')
-const { 
-    Category, 
-    Item, 
+const {
+    Category,
+    Item,
     // Profile, 
-    User 
+    User
 } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        categories: async () => {
-            return Category.find().populate('')
-        },
-        categoryItems: async (parent, { name }, context) => {
-            return Category.findOne({ name: name })
-        }, 
+        // categories: async () => {
+        //     return Category.find().populate('')
+        // },
+        // categoryItems: async (parent, { name }, context) => {
+        //     return Category.findOne({ name: name })
+        // }, 
         me: async (parent, args, context) => {
             if (context._id) {
-                return User.findOne({ _id: context._id}).populate({ 
+                return User.findOne({ _id: context._id }).populate({
                     path: "categories",
                     populate: {
                         path: "items",
@@ -42,13 +42,13 @@ const resolvers = {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
-            if(!user) {
+            if (!user) {
                 throw new AuthenticationError('No user found with this email');
             }
 
             const correctPw = await user.isCorrectPassword(password);
 
-            if(!correctPw) {
+            if (!correctPw) {
                 throw new AuthenticationError('Incorrect credentials')
             }
 
