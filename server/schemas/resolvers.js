@@ -9,63 +9,6 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-<<<<<<< HEAD
-    categories: async (parent, args, context) => {
-      console.log(context.user);
-      return Category.find().populate({
-        path: "items",
-        match: { userId: { $eq: context.user._id } },
-      });
-    },
-    // categoryItems: async (parent, { name }, context) => {
-    //     return Category.findOne({ name: name })
-    // },
-    me: async (parent, args, context) => {
-      // console.log(context);
-      if (context.user._id) {
-        return User.findOne({ _id: context.user._id }).populate({
-          path: "categories",
-          populate: {
-            path: "items",
-            match: {
-              userId: {
-                $eq: context.user._id,
-              },
-            },
-          },
-        });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-  },
-
-  Mutation: {
-    addUser: async (parent, { username, email, password, income }) => {
-      const user = await User.create({ username, email, password, income });
-      const token = signToken(user);
-      return { token, user };
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError("No user found with this email");
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-
-      const token = signToken(user);
-
-      return { token, user };
-    },
-  },
-};
-
-=======
     allCategories: async () => {
       return Category.find().populate("items");
     },
@@ -74,9 +17,7 @@ const resolvers = {
       return Category.find().populate({
         path: "items",
         match: {
-          userId: {
-            $eq: context.user._id,
-          },
+          userId: context.user._id,
         },
       });
     },
@@ -93,9 +34,7 @@ const resolvers = {
         }).populate({
           path: "items",
           match: {
-            userId: {
-              $eq: context.user._id,
-            },
+            userId: context.user._id,
           },
         });
         console.log(currentCategory);
@@ -110,9 +49,7 @@ const resolvers = {
           populate: {
             path: "items",
             match: {
-              userId: {
-                $eq: context.user._id,
-              },
+              userId: context.user._id,
             },
           },
         });
@@ -147,8 +84,12 @@ const resolvers = {
       const category = await Category.create({ name });
       return category;
     },
-    addItem: async (parent, { name, amount, userId, categoryId }) => {
-      const item = await Item.create({ name, amount, userId });
+    addItem: async (parent, { name, amount, categoryId }, context) => {
+      const item = await Item.create({
+        name,
+        amount,
+        userId: context.user._id,
+      });
 
       await Category.findOneAndUpdate(
         { _id: categoryId },
@@ -176,5 +117,4 @@ const resolvers = {
   },
 };
 
->>>>>>> dd7a24f7376dce8ef855d876f95d2bc0b8e2cfe7
 module.exports = resolvers;
