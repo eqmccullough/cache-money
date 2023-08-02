@@ -13,17 +13,17 @@ export default function Header() {
   };
   return (
       <div className="header-container">
-        <h1 className="app-title">Cache Money Records</h1>
+        <Link to="/" id="unstyled"><h1 className="app-title">Budgie</h1></Link>
       <div>
           {Auth.loggedIn() ? (
               <>
               <span>Account: {Auth.getProfile().data.username}</span>
-            <button className='to-be-changed' onClick={logout}>Logout</button>
+            <button id='user-button' onClick={logout}>Logout</button>
             </>
           ) : (
               <>
-              <Link to="/login"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>Login</Button></Link>
-              <Link to="/signup"><Button className="to-be-edited" variant="contained" sx={{ m: 1 }}>SignUp</Button></Link>
+              {/* <Link to="/login"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">Login</Button></Link>
+              <Link to="/signup"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">SignUp</Button></Link> */}
               </>
           )}
         </div>
