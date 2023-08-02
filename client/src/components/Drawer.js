@@ -52,7 +52,7 @@ export default function Drawer() {
     <div>
       {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}> EDIT </Button>
+          <Button onClick={toggleDrawer(anchor, true)} id="drawer-pull"> What's your budgie? </Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
