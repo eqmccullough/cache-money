@@ -30,14 +30,17 @@ const typeDefs = `
   }
 
   type Query {
+    allCategories: [Category]
     categories: [Category]
-    categoryItems(name: String!): [Category] 
+    categoryItems(categoryId: ID!): Category
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!, income: Float!): Auth
     login(email: String!, password: String!): Auth
+    addCategory(name: String!): Category
+    addItem(name: String!, amount: Float!, userId: ID!): Item
   }
 `;
 
