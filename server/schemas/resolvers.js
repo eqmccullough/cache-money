@@ -17,9 +17,7 @@ const resolvers = {
       return Category.find().populate({
         path: "items",
         match: {
-          userId: {
-            $eq: context.user._id,
-          },
+          userId: context.user._id,
         },
       });
     },
@@ -36,9 +34,7 @@ const resolvers = {
         }).populate({
           path: "items",
           match: {
-            userId: {
-              $eq: context.user._id,
-            },
+            userId: context.user._id,
           },
         });
         console.log(currentCategory);
@@ -53,9 +49,7 @@ const resolvers = {
           populate: {
             path: "items",
             match: {
-              userId: {
-                $eq: context.user._id,
-              },
+              userId: context.user._id,
             },
           },
         });
@@ -90,8 +84,8 @@ const resolvers = {
       const category = await Category.create({ name });
       return category;
     },
-    addItem: async (parent, { name, amount, userId, categoryId }) => {
-      const item = await Item.create({ name, amount, userId });
+    addItem: async (parent, { name, amount, categoryId }, context) => {
+      const item = await Item.create({ name, amount, context });
 
       await Category.findOneAndUpdate(
         { _id: categoryId },
