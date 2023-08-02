@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
+// import { useState } from 'react'
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,26 +18,29 @@ const MenuProps = {
   },
 };
 
-const categories = [
-  'Essentials',
-  'Non-Essentials',
-  'Savings',
-  'Add New Category'
-];
+// const categories = [
+//   'Essentials',
+//   'Non-Essentials',
+//   'Savings',
+//   'Add New Category'
+// ];
 
-function getStyles(category, categoryName, theme) {
-  return {
-    fontWeight:
-      categoryName.indexOf(category) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
+// function getStyles(category, categoryName, theme) {
+//   return {
+//     fontWeight:
+//       categoryName.indexOf(category) === -1
+//         ? theme.typography.fontWeightRegular
+//         : theme.typography.fontWeightMedium,
+//   };
+// }
 
-export default function CategorySelect() {
-  const theme = useTheme();
-  const [categoryName, setCategoryName] = React.useState([]);
-
+export default function CategorySelect({ categories }) {
+  // if(!categories) {
+  //   return <MenuItem>No Categories</MenuItem>
+  // }
+  // const theme = useTheme();
+  const [categoryName, setCategoryName] = useState('');
+console.log(categories);
   const handleChange = (event) => {
     const {
       target: { value },
@@ -52,20 +56,20 @@ export default function CategorySelect() {
         <InputLabel id="demo-multiple-name-label">Category</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
+          id="category-select"
           multiple
-          value={categoryName}
+          value={categories}
           onChange={handleChange}
           input={<OutlinedInput label="Category" />}
           MenuProps={MenuProps}
         >
           {categories.map((category) => (
             <MenuItem
-              key={category}
-              value={category}
-              style={getStyles(category, categoryName, theme)}
+              key={category._id}
+              value={category.name}
+              // style={getStyles(category, categoryName, theme)}
             >
-              {category}
+              {category.name}
             </MenuItem>
           ))}
         </Select>

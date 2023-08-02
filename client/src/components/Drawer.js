@@ -1,5 +1,7 @@
-import * as React from "react";
+import React, { useState } from "react";
 import CategorySelect from "./CategorySelect";
+import { useQuery } from "@apollo/client"
+import { ALL_CATEGORIES } from "../utils/queries"
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -20,6 +22,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function Drawer() {
+  const { loading, data } = useQuery(ALL_CATEGORIES)
+  const categories = data?.allCategories || [];
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -60,7 +65,9 @@ export default function Drawer() {
             onOpen={toggleDrawer(anchor, true)}
           >
             <div>
-              <CategorySelect/>
+              <CategorySelect 
+                categories={categories}
+              />
               <ul>
               <li id="custom-input">
                   <h2> Item </h2> <h2> $20.23 </h2>
