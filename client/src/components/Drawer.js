@@ -28,7 +28,7 @@ export default function Drawer() {
   const { data: allCatData, loading: allCatLoading, error: allCatError } = useQuery(ALL_CATEGORIES)
   const categories = allCatData?.allCategories || [];
 
-  const { data: catItemsData, loading: catItemsLoading, error: catItemsError } = useQuery(CATEGORY_ITEMS)
+  // const { data: catItemsData, loading: catItemsLoading, error: catItemsError } = useQuery(CATEGORY_ITEMS)
   
 
   const { data: userItemData, loading: userItemLoading, error: userItemError } = useQuery(USER_ITEMS)

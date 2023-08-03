@@ -13,6 +13,7 @@ export const ALL_CATEGORIES = gql`
 export const CATEGORY_ITEMS = gql`
   query categoryItems($categoryId: ID!) {
     categoryItems(categoryId: $categoryId) {
+      _id
       name
       items {
         _id

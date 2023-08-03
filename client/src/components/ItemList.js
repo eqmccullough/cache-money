@@ -1,6 +1,8 @@
 import React from 'react';
 
-const ItemList = ( categoryItems ) => {
+const ItemList = ( { categoryItems } ) => {
+  console.log('Inside ItemList, categoryItems:', categoryItems);
+  console.log(categoryItems);
   if (!categoryItems.length) {
     return <h3>No Items Found</h3>;
   }
@@ -11,7 +13,7 @@ const ItemList = ( categoryItems ) => {
         className="p-5 display-inline-block"
         style={{ borderBottom: '1px dotted #1a1a1a' }}
       >
-        Items
+        {/* {catName} */}
       </h3>
       <div className="flex-row my-4">
         {categoryItems &&
