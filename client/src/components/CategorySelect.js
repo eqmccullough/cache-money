@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
-// import { useState } from 'react'
+import { useQuery } from '@apollo/client';
+import { useParams } from "react-router-dom";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import ItemList from './ItemList';
+import { CATEGORY_ITEMS } from '../utils/queries';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -39,8 +42,14 @@ export default function CategorySelect({ categories }) {
   //   return <MenuItem>No Categories</MenuItem>
   // }
   // const theme = useTheme();
-  const [categoryName, setCategoryName] = useState('');
-console.log(categories);
+  const { categoryId } = useParams();
+  const { data: catItemsData, loading: catItemsLoading, error: catItemsError } =
+  useQuery(CATEGORY_ITEMS, {variables: {categoryId: categoryId}})
+  const categoryItems = catItemsData?.categoryItems || [];
+
+
+const [categoryName, setCategoryName] = useState('');
+console.log();
   const handleChange = (event) => {
     const { target: { value } } = event;
     // console.log( value);
@@ -49,6 +58,7 @@ console.log(categories);
   };
 
   return (
+    <>
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Category</InputLabel>
@@ -63,7 +73,7 @@ console.log(categories);
           {categories.map((category) => (
             <MenuItem
               key={category._id}
-              value={category.name}
+              value={category._id}
               // style={getStyles(category, categoryName, theme)}
             >
               {category.name}
@@ -72,5 +82,12 @@ console.log(categories);
         </Select>
       </FormControl>
     </div>
+
+    <div>
+        <ul> 
+            <ItemList categoryItems={ categoryName } />
+        </ul>
+    </div>
+    </>
   );
 }

@@ -16,9 +16,9 @@ export default function Header() {
       <div className="header-container">
         <Link to="/" id="unstyled"><h1 className="app-title">Budgie</h1></Link>
       <div>
-          {Auth.loggedIn() ? (
+        {Auth.loggedIn() ? (
               <>
-              <span>Account: {Auth.getProfile().data.username}</span>
+            <span>Account: {Auth.getProfile().data.username}</span>
             <button id='user-button' onClick={logout}>Logout</button>
             </>
           ) : (
