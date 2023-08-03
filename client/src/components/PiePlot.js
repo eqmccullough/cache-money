@@ -23,7 +23,7 @@ function CatName() {
   // }
   // console.log(categoryName);
   const data = {
-    labels: categoryName,
+    labels: categoryName ,
     // labels: ['Essentials', 'Non-Essentials', 'Savings'],
     datasets: [
       {

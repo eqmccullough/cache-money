@@ -56,10 +56,10 @@
 }
 
 .app-title{
-    font-size: 3rem;
+    font-size: 2.8rem;
     color: #00000000;
     font-family: 'Asset', cursive;
-    -webkit-text-stroke: 1px var(--money);
+    -webkit-text-stroke: 0.5px var(--money);
     font-weight: 700;
     font-style: italic;
 }
@@ -77,12 +77,26 @@
     align-items: center;
 }
 
+.motion-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #drawer-pull{
     color: var(--off-light)
 }
 
+.bill-box{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .bill-logo{
-    width:40%;
+    width:100%;
 }
 
 #pie-box{
@@ -126,7 +140,8 @@ h6{
     color: var(--green-1);
     font-family: 'Figtree', sans-serif;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    font-style: italic;
 }
 
 
@@ -135,6 +150,8 @@ h6{
 @media screen and (max-width: 720px) {
     .app-body{flex-direction: column; justify-content: flex-start; align-items: center;}
     .chart-container{flex-direction: column; align-items: center; margin-top: 1rem;}
+    .app-title{ font-size: 2.3rem;}
+    .bill-box{width:60%;}
     #pie-box{width: 60%; margin: 1rem;}
     #pie-box h3{font-size: 2rem;}
   }
