@@ -96,7 +96,7 @@ export default function Drawer() {
                 </li>
 
                 <li id="custom-input">
-                  <TextField sx={{ m: 1, width: "50ch" }} label="Category" variant="filled" />
+                  <TextField sx={{ m: 1, width: "50ch" }} label="Add Item" variant="filled" />
                   <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
                     <InputLabel htmlFor="filled-adornment-amount">
                       Amount
