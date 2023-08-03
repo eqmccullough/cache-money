@@ -144,6 +144,12 @@ h6{
     font-style: italic;
 }
 
+#custom-item {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
 
 /* Responsive-layouts */
 
@@ -155,3 +161,4 @@ h6{
     #pie-box{width: 60%; margin: 1rem;}
     #pie-box h3{font-size: 2rem;}
   }
+

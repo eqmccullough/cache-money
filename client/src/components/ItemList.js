@@ -1,4 +1,11 @@
 import React from 'react';
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete';
+import Fab from "@mui/material/Fab";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import '../styles/home.css'
 
 const ItemList = ( { categoryItems } ) => {
   console.log('Inside ItemList, categoryItems:', categoryItems);
@@ -18,7 +25,7 @@ const ItemList = ( { categoryItems } ) => {
       <div className="flex-row my-4">
         {categoryItems &&
           categoryItems.map((item) => (
-            <div key={item._id} className="col-12 mb-3 pb-3">
+            <div key={item._id} className="col-12 mb-3 pb-3" id="custom-item">
               <div className="p-3 bg-dark text-light">
                 <h5 className="card-header">
                   {item.name}
@@ -26,6 +33,12 @@ const ItemList = ( { categoryItems } ) => {
                   {item.amount}
                   </span>
                 </h5>
+                <Fab color="secondary" sx={{ m: 1, bgcolor:"#6048a3"}} aria-label="edit">
+                  <EditIcon />
+                  </Fab>
+                  <Fab color="secondary" sx={{ m: 1, bgcolor:"#9e4848"}} aria-label="edit">
+                    <DeleteIcon />
+                    </Fab>
               </div>
             </div>
           ))}
