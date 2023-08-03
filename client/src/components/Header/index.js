@@ -7,6 +7,7 @@ import '../../styles/home.css'
 import Auth from "../../utils/auth";
 
 export default function Header() {
+  const bill = require('../../assets/budgie-bill.jpg')
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -18,6 +19,7 @@ export default function Header() {
         {Auth.loggedIn() ? (
               <>
             <span>Account: {Auth.getProfile().data.username}</span>
+            {/* <img src={bill} className="bill-icon"></img> */}
             <button id='user-button' onClick={logout}>Logout</button>
             </>
           ) : (

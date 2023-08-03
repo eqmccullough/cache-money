@@ -59,7 +59,7 @@ export default function Login(props) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container sx={{ bgcolor: "white" }} component="main" maxWidth="xs">
+      <Container sx={{ bgcolor: "white" }} maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -69,7 +69,7 @@ export default function Login(props) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'main' }}>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
