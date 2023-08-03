@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import CategorySelect from "./CategorySelect";
 import { useQuery } from "@apollo/client"
-import { ALL_CATEGORIES } from "../utils/queries"
-import { CATEGORY_ITEMS } from "../utils/queries";
+import { ALL_CATEGORIES, CATEGORY_ITEMS, USER_ITEMS } from "../utils/queries"
 import ItemList from "./ItemList";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";

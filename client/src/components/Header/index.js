@@ -7,6 +7,7 @@ import '../../styles/home.css'
 import Auth from "../../utils/auth";
 
 export default function Header() {
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -22,8 +23,8 @@ export default function Header() {
             </>
           ) : (
               <>
-              {/* <Link to="/login"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">Login</Button></Link>
-              <Link to="/signup"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">SignUp</Button></Link> */}
+              <Link to="/login"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">Login</Button></Link>
+              <Link to="/signup"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">SignUp</Button></Link>
               </>
           )}
         </div>
