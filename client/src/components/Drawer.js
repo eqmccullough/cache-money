@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import CategorySelect from "./CategorySelect";
 import { useQuery } from "@apollo/client"
-import { ALL_CATEGORIES, USER_ITEMS, CATEGORY_ITEMS } from "../utils/queries"
+import { ALL_CATEGORIES } from "../utils/queries"
+import { CATEGORY_ITEMS } from "../utils/queries";
+import ItemList from "./ItemList";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -30,6 +32,10 @@ export default function Drawer() {
   
 
   const { data: userItemData, loading: userItemLoading, error: userItemError } = useQuery(USER_ITEMS)
+
+  const { itemData } = useQuery(CATEGORY_ITEMS)
+  const items = itemData?.categoryItems || [];
+
 
   const [state, setState] = React.useState({
     top: false,
@@ -76,7 +82,7 @@ export default function Drawer() {
               />
               <ul>
               <li id="custom-input">
-                  <h2> Item </h2> <h2> $20.23 </h2>
+                  <ItemList items={ items } />
                   <Fab color="secondary" sx={{ m: 1, bgcolor:"#6048a3"}} aria-label="edit">
                   <EditIcon />
                   </Fab>
