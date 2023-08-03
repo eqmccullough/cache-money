@@ -15,15 +15,15 @@ export default function Header() {
       <div className="header-container">
         <Link to="/" id="unstyled"><h1 className="app-title">Budgie</h1></Link>
       <div>
-          {Auth.loggedIn() ? (
+        {Auth.loggedIn() ? (
               <>
-              <span>Account: {Auth.getProfile().data.username}</span>
+            <span>Account: {Auth.getProfile().data.username}</span>
             <button id='user-button' onClick={logout}>Logout</button>
             </>
           ) : (
               <>
-              {/* <Link to="/login"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">Login</Button></Link>
-              <Link to="/signup"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">SignUp</Button></Link> */}
+              <Link to="/login"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">Login</Button></Link>
+              <Link to="/signup"><Button id="user-button" variant="contained" sx={{ m: 1 }} size="small">SignUp</Button></Link>
               </>
           )}
         </div>

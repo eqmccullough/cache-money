@@ -76,7 +76,7 @@ export default function Login(props) {
           </Typography>
           {data ? (
             <p> You're logged in!{' '}
-            <RRRLink to="/">to your profile</RRRLink>
+            <RRRLink to="/profile">to your profile</RRRLink>
             </p>
           ) : (
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

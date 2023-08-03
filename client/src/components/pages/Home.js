@@ -11,10 +11,10 @@ export default function ResponsiveGrid() {
       <div className="home-screen">
         <img src={bill} className="bill-logo"></img>
         <h6> The only app you will ever need to manage your money and ball on a budgie.</h6>
-        <div className="home-button-group"> 
+        {/* <div className="home-button-group"> 
         <Link to="/login"><Button id="home-button" variant="contained" sx={{ m: 1 }} size="large">Login</Button></Link>
               <Link to="/signup"><Button id="home-button" variant="contained" sx={{ m: 1 }} size="large">SignUp</Button></Link>
-        </div>
+        </div> */}
       </div> 
       
         
