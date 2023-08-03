@@ -16,8 +16,8 @@ import Profile from "./components/pages/Profile";
 import Drawer from "./components/Drawer";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
-    // uri: "/graphql",
+  // uri: "http://localhost:3001/graphql",
+    uri: "/graphql",
 
 });
 
