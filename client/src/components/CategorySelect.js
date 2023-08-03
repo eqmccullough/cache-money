@@ -40,8 +40,8 @@ export default function CategorySelect({ categories }) {
 
     // {variables: {categoryId: categoryName}});
   const categoryItems = catItemsData?.categoryItems?.items || [];
-  const catName = catItemsData?.categoryItems?.name || [];
-  console.log(catName);
+  // const catName = catItemsData?.categoryItems?.name || [];
+  // console.log(catName);
 
 
   const handleChange = (event) => {
