@@ -27,6 +27,14 @@ export default function Drawer() {
   const { data } = useQuery(ALL_CATEGORIES)
   const categories = data?.allCategories || [];
 
+  var categoryName = [];
+  for (let i = 0; i < categories.length; i++) {
+
+    categoryName.push(categories[i].name);
+  }
+  console.log(categoryName);
+
+
   const { itemData } = useQuery(CATEGORY_ITEMS)
   const items = itemData?.categoryItems || [];
 
@@ -71,16 +79,16 @@ export default function Drawer() {
             onOpen={toggleDrawer(anchor, true)}
           >
             <div>
-              <CategorySelect 
+              <CategorySelect
                 categories={categories}
               />
               <ul>
-              <li id="custom-input">
-                  <ItemList items={ items } />
-                  <Fab color="secondary" sx={{ m: 1, bgcolor:"#6048a3"}} aria-label="edit">
-                  <EditIcon />
+                <li id="custom-input">
+                  <ItemList items={items} />
+                  <Fab color="secondary" sx={{ m: 1, bgcolor: "#6048a3" }} aria-label="edit">
+                    <EditIcon />
                   </Fab>
-                  <Fab color="secondary" sx={{ m: 1, bgcolor:"#9e4848"}} aria-label="edit">
+                  <Fab color="secondary" sx={{ m: 1, bgcolor: "#9e4848" }} aria-label="edit">
                     <DeleteIcon />
                   </Fab>
                 </li>
