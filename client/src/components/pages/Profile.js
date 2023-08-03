@@ -8,6 +8,7 @@ import "../../styles/home.css";
 export default function Profile() {
   return (
     <>
+    <Drawer />
         <div className="chart-container">
           <div id="pie-box">
             <PiePlot />

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
@@ -24,6 +25,8 @@ import Auth from '../../utils/auth';
 const defaultTheme = createTheme();
 
 export default function Login(props) {
+  // const navigate = useNavigate();
+
   const [formState, setFormState] = useState({ 
     email: '',
     password: ''
@@ -47,14 +50,15 @@ export default function Login(props) {
     })
 
       Auth.login(data.login.token)
+      setFormState({
+        email: '',
+        password: '',
+      })
+      // navigate("/profile")
     } catch (e) {
       console.error(e);
     }
-
-    setFormState({
-      email: '',
-      password: '',
-    })
+    
   };
 
   return (
@@ -76,7 +80,7 @@ export default function Login(props) {
           </Typography>
           {data ? (
             <p> You're logged in!{' '}
-            <RRRLink to="/">to your profile</RRRLink>
+            <RRRLink to="/profile">to your profile</RRRLink>
             </p>
           ) : (
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -125,7 +129,7 @@ export default function Login(props) {
               </Grid>
             </Grid>
           </Box>
-          )}
+          )} 
         </Box>
       </Container>
     </ThemeProvider>

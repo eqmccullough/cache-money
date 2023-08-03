@@ -42,12 +42,10 @@ export default function CategorySelect({ categories }) {
   const [categoryName, setCategoryName] = useState('');
 console.log(categories);
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setCategoryName(
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    const { target: { value } } = event;
+    // console.log( value);
+    // console.log(event.target.value)
+    setCategoryName(value);
   };
 
   return (
@@ -57,8 +55,7 @@ console.log(categories);
         <Select
           labelId="demo-multiple-name-label"
           id="category-select"
-          multiple
-          value={categories}
+          value={categoryName}
           onChange={handleChange}
           input={<OutlinedInput label="Category" />}
           MenuProps={MenuProps}

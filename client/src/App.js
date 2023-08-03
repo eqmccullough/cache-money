@@ -58,7 +58,6 @@ function App() {
             </Routes>
           </div>
           <footer>
-            <Drawer/>
           </footer>
         </div>
       </Router>

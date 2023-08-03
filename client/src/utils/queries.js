@@ -22,3 +22,13 @@ export const CATEGORY_ITEMS = gql`
     }
   }
 `;
+
+export const USER_ITEMS = gql`
+  query userItems {
+    userItems {
+      _id
+      name
+      amount
+    }
+  }
+`;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategorySelect from "./CategorySelect";
 import { useQuery } from "@apollo/client"
-import { ALL_CATEGORIES } from "../utils/queries"
+import { ALL_CATEGORIES, USER_ITEMS, CATEGORY_ITEMS } from "../utils/queries"
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -22,8 +22,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function Drawer() {
-  const { loading, data } = useQuery(ALL_CATEGORIES)
-  const categories = data?.allCategories || [];
+
+  const { data: allCatData, loading: allCatLoading, error: allCatError } = useQuery(ALL_CATEGORIES)
+  const categories = allCatData?.allCategories || [];
+
+  const { data: catItemsData, loading: catItemsLoading, error: catItemsError } = useQuery(CATEGORY_ITEMS)
+  
+
+  const { data: userItemData, loading: userItemLoading, error: userItemError } = useQuery(USER_ITEMS)
 
   const [state, setState] = React.useState({
     top: false,
@@ -55,7 +61,7 @@ export default function Drawer() {
 
   return (
     <div>
-      {["bottom"].map((anchor) => (
+      {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)} id="drawer-pull"> What's your budgie? </Button>
           <SwipeableDrawer
