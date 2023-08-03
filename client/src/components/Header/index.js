@@ -7,7 +7,9 @@ import '../../styles/home.css'
 import Auth from "../../utils/auth";
 
 export default function Header() {
-  const bill = require('../../assets/budgie-bill.jpg')
+
+
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();

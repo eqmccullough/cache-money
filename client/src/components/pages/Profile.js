@@ -10,12 +10,16 @@ import "../../styles/home.css";
 export default function Profile() {
   return (
     <>
+
       <motion.div
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth }}
       transition={{ duration: 1 }}
     >
+
+    <Drawer />
+
         <div className="chart-container">
           <div id="pie-box">
             <PiePlot />
