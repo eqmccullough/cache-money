@@ -21,21 +21,6 @@ const MenuProps = {
   },
 };
 
-// const categories = [
-//   'Essentials',
-//   'Non-Essentials',
-//   'Savings',
-//   'Add New Category'
-// ];
-
-// function getStyles(category, categoryName, theme) {
-//   return {
-//     fontWeight:
-//       categoryName.indexOf(category) === -1
-//         ? theme.typography.fontWeightRegular
-//         : theme.typography.fontWeightMedium,
-//   };
-// }
 
 export default function CategorySelect({ categories }) {
   // if(!categories) {
@@ -43,20 +28,33 @@ export default function CategorySelect({ categories }) {
   // }
   // const theme = useTheme();
   const { categoryId } = useParams();
-  const { data: catItemsData, loading: catItemsLoading, error: catItemsError } =
-  useQuery(CATEGORY_ITEMS, {variables: {categoryId: categoryId}})
-  const categoryItems = catItemsData?.categoryItems || [];
+  const [categoryName, setCategoryName] = useState(categoryId || '');
+
+  
+
+  const queryOptions = categoryName
+  ? { variables: { categoryId: categoryName } }
+  : undefined;
+  const { data: catItemsData, loading: catItemsLoading, error: catItemsError } = useQuery(CATEGORY_ITEMS, queryOptions)
+  console.log(catItemsData);
+
+    // {variables: {categoryId: categoryName}});
+  const categoryItems = catItemsData?.categoryItems?.items || [];
+  // const catName = catItemsData?.categoryItems?.name || [];
+  // console.log(catName);
 
 
-const [categoryName, setCategoryName] = useState('');
-console.log();
   const handleChange = (event) => {
-    const {target: { value }} = event;
-    setCategoryName(value);
-    console.log(value);
-    console.log(categoryName);
+    // const { target: { value } } = event;
+    const selectedCatId = event.target.value;
+    // console.log(`Selected Category ID: ${selectedCatId}`);
+    // console.log( value);
+    // console.log(event.target.value)
+    // console.log(categoryItems);
+    setCategoryName(selectedCatId);
+    // console.log(categoryItems);
   };
-
+  console.log('Category Items:', categoryItems);
   return (
     <>
     <div>
@@ -84,9 +82,9 @@ console.log();
     </div>
 
     <div>
-        <ul> 
-            <ItemList categoryItems={ categoryName } />
-        </ul>
+            {/* console.log('Category Items:', categoryItems); */}
+            <ItemList categoryItems={ categoryItems } />
+        
     </div>
     </>
   );

@@ -26,6 +26,9 @@ const resolvers = {
     //     return User.findOne()
     //   }
     // },
+    userItems: async (parent, args, context) => {
+      return Item.find({userId: context.user._id})
+    },
 
     categoryItems: async (parent, { categoryId }, context) => {
       if (context.user._id) {

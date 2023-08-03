@@ -7,6 +7,7 @@ import '../../styles/home.css'
 import Auth from "../../utils/auth";
 
 export default function Header() {
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
