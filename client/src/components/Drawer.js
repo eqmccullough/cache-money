@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CategorySelect from "./CategorySelect";
 import { useQuery } from "@apollo/client"
+import { useParams } from "react-router-dom";
 import { ALL_CATEGORIES } from "../utils/queries"
 import { CATEGORY_ITEMS } from "../utils/queries";
 import ItemList from "./ItemList";
@@ -27,8 +28,11 @@ export default function Drawer() {
   const { data } = useQuery(ALL_CATEGORIES)
   const categories = data?.allCategories || [];
 
-  const { itemData } = useQuery(CATEGORY_ITEMS)
-  const items = itemData?.categoryItems || [];
+  const { categoryId } = useParams();
+
+  // const { data: catItemsData, loading: catItemsLoading, error: catItemsError } =
+  //   useQuery(CATEGORY_ITEMS, {variables: {categoryId: categoryId}})
+  // const categoryItems = catItemsData?.categoryItems || [];
 
 
   const [state, setState] = React.useState({
@@ -74,9 +78,10 @@ export default function Drawer() {
               <CategorySelect 
                 categories={categories}
               />
+
               <ul>
               <li id="custom-input">
-                  <ItemList items={ items } />
+                  {/* <ItemList categoryItems={ categoryItems } /> */}
                   <Fab color="secondary" sx={{ m: 1, bgcolor:"#6048a3"}} aria-label="edit">
                   <EditIcon />
                   </Fab>
