@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,14 +20,17 @@ const ItemList = ({ categoryItems }) => {
         className="p-5 display-inline-block"
         style={{ borderBottom: "1px dotted #1a1a1a" }}
       >
-        {/* {catName} */}
+        {/* {ExpenseItems} */}
       </h3>
       <div className="flex-row my-4 justify-center">
         {categoryItems &&
           categoryItems.map((item) => (
             <div key={item._id} className="col-12 m-3 p-3">
               <div id="custom-item" className="p-3 m-3 bg-dark text-light">
-                <h5 className="card-header" style={{ fontSize: "1.7rem", fontWeight: "bolder" }}>
+                <h5
+                  className="card-header"
+                  style={{ fontSize: "1.7rem", fontWeight: "bolder" }}
+                >
                   {item.name}:
                   <span
                     id="item-amount"
