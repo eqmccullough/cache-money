@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CategorySelect from "./CategorySelect";
 import { useQuery } from "@apollo/client";
 import { ALL_CATEGORIES, CATEGORY_ITEMS, USER_ITEMS } from "../utils/queries";
@@ -93,6 +93,7 @@ export default function Drawer() {
 
                 <ul>
                   <ExpenseItems />
+
                   <AddExpense />
                 </ul>
               </div>

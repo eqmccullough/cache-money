@@ -16,7 +16,7 @@ const AddExpense = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // alert("name" + name + "cost" + cost);
+    alert("name" + name + "cost" + cost);
 
     const expense = {
       id: uuidv4(),
