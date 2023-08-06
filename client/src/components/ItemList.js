@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -6,6 +6,7 @@ import Fab from "@mui/material/Fab";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import "../styles/home.css";
+import AddExpense from "./AddExpenseForm";
 
 const ItemList = ({ categoryItems }) => {
   console.log("Inside ItemList, categoryItems:", categoryItems);
@@ -19,9 +20,7 @@ const ItemList = ({ categoryItems }) => {
       <h3
         className="p-5 display-inline-block"
         style={{ borderBottom: "1px dotted #1a1a1a" }}
-      >
-        {/* {ExpenseItems} */}
-      </h3>
+      ></h3>
       <div className="flex-row my-4 justify-center">
         {categoryItems &&
           categoryItems.map((item) => (

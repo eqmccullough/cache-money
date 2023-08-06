@@ -8,7 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { AppContext } from "../context/AppContext";
 
 const ExpenseItem = (props) => {
-  //   const { dispatch } = useContext(AppContext);
+  // const { dispatch } = useContext(AppContext);
   //   const handleDeleteExpense = () => {
   //     dispatch({
   //       type: "DELETE_EXPENSE",

@@ -16,7 +16,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ExpenseItems from "./ExpenseItems";
+import ExpenseItems from "./ExpenseItemsList";
 import Budget from "./Budget";
 import { AppProvider } from "../context/AppContext";
 import AddExpense from "./AddExpenseForm";
@@ -93,7 +93,6 @@ export default function Drawer() {
 
                 <ul>
                   <ExpenseItems />
-
                   <AddExpense />
                 </ul>
               </div>
