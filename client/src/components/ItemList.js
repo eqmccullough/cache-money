@@ -6,28 +6,56 @@ import Fab from "@mui/material/Fab";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import "../styles/home.css";
+import { useMutation } from "@apollo/client";
+import { REMOVE_ITEM } from "../utils/mutations";
+import { CATEGORY_ITEMS } from "../utils/queries";
 
 const ItemList = ({ categoryItems }) => {
-  console.log("Inside ItemList, categoryItems:", categoryItems);
-  console.log(categoryItems);
-  if (!categoryItems.length) {
-    return <h3>No Items Found</h3>;
+  const [removeItem, { loading, success }] = useMutation(REMOVE_ITEM, {
+    update(cache, { data: { removeItem } }) {
+      try {
+        cache.writeQuery({
+          query: CATEGORY_ITEMS,
+          data: { categoryItems: removeItem },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
+  if (success) {
+    return <> Nice! </>
   }
+  if (loading) {
+    return <p> Loading... </p>;
+  }
+
+  const handleRemoveItem = async (item) => {
+    try {
+      const { data } = await removeItem({
+        variables: {
+          itemId: item._id,
+          categoryId: item.categoryId,
+        },
+      });
+      console.log("success");
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <>
-      <h3
-        className="p-5 display-inline-block"
-        style={{ borderBottom: "1px dotted #1a1a1a" }}
-      >
-        {/* {catName} */}
-      </h3>
       <div className="flex-row my-4 justify-center">
         {categoryItems &&
           categoryItems.map((item) => (
             <div key={item._id} className="col-12 m-3 p-3">
               <div id="custom-item" className="p-3 m-3 bg-dark text-light">
-                <h5 className="card-header" style={{ fontSize: "1.7rem", fontWeight: "bolder" }}>
+                <h5
+                  className="card-header"
+                  style={{ fontSize: "1.7rem", fontWeight: "bolder" }}
+                >
                   {item.name}:
                   <span
                     id="item-amount"
@@ -48,7 +76,8 @@ const ItemList = ({ categoryItems }) => {
                   <Fab
                     color="secondary"
                     sx={{ m: 1, bgcolor: "#9e4848" }}
-                    aria-label="edit"
+                    aria-label="delete"
+                    onClick={() => handleRemoveItem(item)}
                   >
                     <DeleteIcon />
                   </Fab>

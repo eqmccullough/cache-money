@@ -66,3 +66,16 @@ export const UPDATE_ITEM = gql`
     }
   }
 `;
+
+export const REMOVE_ITEM = gql`
+  mutation removeItem($categoryId: ID!, $itemId: ID!) {
+    removeItem(categoryId: $categoryId, itemId: $itemId) {
+      _id
+      name
+      userId {
+        _id
+      }
+    }
+  }
+`;
+

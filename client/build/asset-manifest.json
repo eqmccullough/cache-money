@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.730a36fa.css",
-    "main.js": "/static/js/main.d587f28a.js",
+    "main.css": "/static/css/main.c0cd458c.css",
+    "main.js": "/static/js/main.b55b0393.js",
     "static/media/budgie-bill.jpg": "/static/media/budgie-bill.3f28aa85296a47dc7467.jpg",
     "index.html": "/index.html",
-    "main.730a36fa.css.map": "/static/css/main.730a36fa.css.map",
-    "main.d587f28a.js.map": "/static/js/main.d587f28a.js.map"
+    "main.c0cd458c.css.map": "/static/css/main.c0cd458c.css.map",
+    "main.b55b0393.js.map": "/static/js/main.b55b0393.js.map"
   },
   "entrypoints": [
-    "static/css/main.730a36fa.css",
-    "static/js/main.d587f28a.js"
+    "static/css/main.c0cd458c.css",
+    "static/js/main.b55b0393.js"
   ]
 }
