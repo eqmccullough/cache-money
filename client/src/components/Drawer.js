@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import CategorySelect from "./CategorySelect";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { ADD_CATEGORY } from "../utils/mutations";
 import { ALL_CATEGORIES, CATEGORY_ITEMS, USER_ITEMS } from "../utils/queries";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
@@ -29,6 +30,12 @@ export default function Drawer() {
   } = useQuery(ALL_CATEGORIES);
   const categories = allCatData?.allCategories || [];
 
+  const [currentCategory, setCategory] = useState(categories[0] || "");
+
+  function handleCategorySelect(categoryId) {
+    console.log(categoryId);
+    setCategory(categoryId);
+  }
   // const { data: catItemsData, loading: catItemsLoading, error: catItemsError } = useQuery(CATEGORY_ITEMS)
 
   const {
@@ -89,12 +96,15 @@ export default function Drawer() {
               <div>
                 <h3 className="mt-3">Expenses</h3>
                 <Budget />
-                <CategorySelect categories={categories} />
+                <CategorySelect
+                  onChange={handleCategorySelect}
+                  categories={categories}
+                />
 
                 <ul>
                   <ExpenseItems />
 
-                  <AddExpense />
+                  <AddExpense category={currentCategory} />
                 </ul>
               </div>
             </SwipeableDrawer>
