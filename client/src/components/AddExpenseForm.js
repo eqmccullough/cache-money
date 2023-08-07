@@ -8,28 +8,49 @@ import AddIcon from "@mui/icons-material/Add";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FilledInput from "@mui/material/FilledInput";
+import { useMutation } from "@apollo/client";
 
-import {ADD_ITEM} from "../utils/mutations";
+import { ADD_ITEM } from "../utils/mutations";
 
-const AddExpense = () => {
+const AddExpense = ({ category }) => {
   const { dispatch } = useContext(AppContext);
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
+  const [addItem, { error: addItemerr, data: addItemData }] =
+    useMutation(ADD_ITEM);
+  if (addItemerr) {
+    console.log(JSON.stringify(addItemerr));
+  }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    alert("name" + name + "cost" + cost);
+    const formData = new FormData(event.target);
+    let formDataObj = Object.fromEntries(formData.entries());
+    console.log(formDataObj, category);
 
-    const expense = {
-      id: uuidv4(),
-      name: name,
-      cost: parseInt(cost),
-    };
+    const submitData = { ...formDataObj, categoryId: category };
+    submitData.amount = parseFloat(submitData.amount);
+    try {
+      const { data } = await addItem({
+        variables: submitData,
+      });
 
-    dispatch({
-      type: "ADD_ITEM",
-      payload: expense,
-    });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+    // alert("name" + name + "cost" + cost);
+
+    // const expense = {
+    //   id: uuidv4(),
+    //   name: name,
+    //   cost: parseInt(cost),
+    // };
+
+    // dispatch({
+    //   type: "ADD_ITEM",
+    //   payload: expense,
+    // });
   };
   return (
     <div>
@@ -40,6 +61,7 @@ const AddExpense = () => {
             label="Add Item"
             variant="filled"
             id="name"
+            name="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
@@ -47,6 +69,7 @@ const AddExpense = () => {
             <InputLabel htmlFor="filled-adornment-amount">Amount</InputLabel>
             <FilledInput
               id="cost"
+              name="amount"
               value={cost}
               onChange={(event) => setCost(event.target.value)}
               startAdornment={
