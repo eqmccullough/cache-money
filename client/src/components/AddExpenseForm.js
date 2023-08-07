@@ -9,6 +9,8 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FilledInput from "@mui/material/FilledInput";
 
+import {ADD_ITEM} from "../utils/mutations";
+
 const AddExpense = () => {
   const { dispatch } = useContext(AppContext);
   const [name, setName] = useState("");
